@@ -11,8 +11,8 @@ s_box = [[2,12,4,1,7,10,11,6,8,5,3,15,13,0,14,9],
 #     a = list(map(int, input().split(" ")))
 #     s_box.append(a)
 
-row = int(number[5]+number[0], 2)
-column = int(number[4]+number[3]+number[2]+number[1], 2)
+row = int(number[0]+number[5], 2)
+column = int(number[1]+number[2]+number[3]+number[4], 2)
 output = '{:04b}'.format(s_box[row][column])
 
 print("Output:",output)
