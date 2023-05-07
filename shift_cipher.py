@@ -1,30 +1,46 @@
-key = 1
-def encriptions():
-    text = input("Text = ")
-    entext = ""
-    for letter in text:
-        if(letter.islower()):
-            entext += chr((ord(letter)+key-97)%26+97)
-        elif(letter.isupper()):
-            entext += chr((ord(letter)+key-65)%26+65)
+#shift cipher
+def encryption(text, key):
+    ent = []
+    a = ''
+    for l in text:
+        if(l.isupper()):
+            a = chr((ord(l) + key-65) % 26+65)
+        elif(l.islower()):
+            a = chr((ord(l) + key - 97) % 26 + 97)
         else:
-            entext += letter
-       
-    text = entext
-    print("Encripted text: " + text)
+            a = l
 
-def decriptions():
-    text = input("Text = ")
-    detext = ""
-    for letter in text:
-        if(letter.islower()):
-            detext += chr((ord(letter)-key-97)%26+97)
-        elif(letter.isupper()):
-            detext += chr((ord(letter)-key-65)%26+65)
+        ent.append(a)
+
+    ent = ''.join(ent)
+    return ent
+
+
+def decryption(text, key):
+    dec = []
+    a = ''
+    for l in text:
+        if (l.isupper()):
+            a = chr((ord(l) - key - 65) % 26 + 65)
+        elif (l.islower()):
+            a = chr((ord(l) - key - 97) % 26 + 97)
         else:
-            detext += letter
-    text = detext
-    print("Decripted Text: " + text)
+            a = l
 
-encriptions()
-decriptions()
+        dec.append(a)
+
+    dec = ''.join(dec)
+    return dec
+
+print("Encryption: ")
+key = int(input("Key: "))
+text = input("Plain text: ")
+print(encryption(text, key))
+
+print("Decryption: ")
+key2 = int(input("Key: "))
+text2 = input("Plain text: ")
+print(decryption(text2, key2))
+
+
+
